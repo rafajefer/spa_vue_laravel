@@ -23,7 +23,15 @@
                             <span class="helper-text" data-error="wrong" data-success="right" v-if="error_senha">Helper text</span>
                         </div>
                         <input type="submit" value="Entrar" class="waves-effect waves-light btn" />
-                        <router-link to="/register" class="btn waves-effect waves-light">Registre-se</router-link>
+                        <router-link to="/register" class="btn waves-effect waves-light orange">Registre-se</router-link><br /><br />
+                        <a href="#" v-on:click="recupera_senha = !recupera_senha">Esqueci minha senha</a><br />
+
+                        <div class="input-field" v-if="recupera_senha">
+                            <input id="recupera_senha" type="email" class="validate">
+                            <label for="recupera_senha">Digite seu email</label>
+                            <i class="material-icons prefix">send</i>
+                            <span class="helper-text" data-error="wrong" data-success="right" v-if="message">Nova senha enviado com sucesso para ....</span>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -33,19 +41,50 @@
 
 <script>
 import TemplateLogin from '@/templates/TemplateLogin'
-import GridVue from '@/components/layouts/GridVue'
 
 export default {
     name: 'Login',
     data () {
         return {
             error_email: false,
-            error_senha: false
+            error_senha: false,
+            message: false,
+            recupera_senha: false
         }
     },
     components: {
-        TemplateLogin,
-        GridVue
+        TemplateLogin
     }
 }
 </script>
+
+<style scoped>
+ /* label color */
+   .input-field label {
+     color: #000;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #000;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #000;
+   }
+     
+</style>

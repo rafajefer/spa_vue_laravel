@@ -1,0 +1,24 @@
+
+Api com Laravel:
+
+instalar o Laravel
+composer create-project --prefer-dist laravel/laravel webservice "5.5.*"
+
+composer require laravel/passport
+
+configurar o banco de dados...
+
+php artisan migrate
+
+php artisan passport:install
+
+colocar no User:
+user Laravel\Passport\HasApiTokens;
+user HasApiTokens, Notifiable;
+
+e o config/auth
+
+'api' => [
+    'driver' => 'passport',
+    'provider' => 'users,
+],
